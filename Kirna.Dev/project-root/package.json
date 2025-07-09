@@ -1,0 +1,25 @@
+{
+  "name": "kirna-dev",
+  "version": "1.0.0",
+  "description": "KIRNA.DEV - Premium CMS-based development services",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx tailwindcss -i ./src/styles/main.css -o ./src/styles/output.css --watch",
+    "build": "npx tailwindcss -i ./src/styles/main.css -o ./src/styles/output.css --minify",
+    "build:css": "npx tailwindcss -i ./src/styles/main.css -o ./src/styles/output.css --minify",
+    "start": "npx serve ."
+  },
+  "keywords": ["kirna", "cms", "kirby", "aceternity", "tailwind", "web-agency"],
+  "author": "KIRNA.DEV",
+  "license": "MIT",
+  "devDependencies": {
+    "tailwindcss": "^3.4.17",
+    "autoprefixer": "^10.4.19",
+    "postcss": "^8.4.38"
+  },
+  "dependencies": {
+    "alpinejs": "^3.13.5",
+    "aos": "^2.3.4",
+    "gsap": "^3.12.5"
+  }
+}
