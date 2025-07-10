@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Projects - KIRNA.DEV</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iOCIgZmlsbD0idXJsKCNncmFkaWVudDApIi8+CjxkZWZzPgo8bGluZWFyR3JhZGllbnQgaWQ9ImdyYWRpZW50MCIgeDE9IjAiIHkxPSIwIiB4Mj0iMzIiIHkyPSIzMiIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPgo8c3RvcCBzdG9wLWNvbG9yPSIjM0I4MkY2Ii8+CjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzg2NUNGNiIvPgo8L2xpbmVhckdyYWRpZW50Pgo8L2RlZnM+Cjx0ZXh0IHg9IjE2IiB5PSIyMiIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjE4IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0id2hpdGUiIHRleHQtYW5jaG9yPSJtaWRkbGUiPks8L3RleHQ+Cjwvc3ZnPgo=" />
+  <meta name="description" content="Showcase of premium projects by KIRNA.DEV - Modern, animated, and responsive web experiences." />
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/src/styles/output.css" />
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <!-- Alpine.js -->
+  <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+</head>
+<body class="bg-black text-white overflow-x-hidden" x-data="{ 
+  isMenuOpen: false,
+  cursor: { x: 0, y: 0 },
+  mousePosition: { x: 0, y: 0 }
+}" 
+@mousemove="mousePosition = { x: $event.clientX, y: $event.clientY }"
+@mousemove="cursor = { x: $event.clientX, y: $event.clientY }">
+
+  <!-- Custom Cursor -->
+  <div class="fixed inset-0 pointer-events-none z-[9999]">
+    <div class="fixed w-8 h-8 bg-white/20 backdrop-blur-sm rounded-full border border-white/30 transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-75 ease-out"
+         :style="`left: ${cursor.x}px; top: ${cursor.y}px;`"></div>
+    <div class="fixed w-2 h-2 bg-white rounded-full transform -translate-x-1/2 -translate-y-1/2 transition-transform duration-150 ease-out"
+         :style="`left: ${cursor.x}px; top: ${cursor.y}px;`"></div>
+  </div>
+
+  <!-- Particle Background -->
+  <div class="fixed inset-0 z-0">
+    <div id="particles-js" class="w-full h-full"></div>
+  </div>
+
+  <!-- Navigation -->
+  <nav class="fixed top-0 left-0 right-0 z-50 bg-black/20 backdrop-blur-xl border-b border-white/10">
+    <div class="max-w-7xl mx-auto px-6 py-4">
+      <div class="flex items-center justify-between">
+        <!-- Logo -->
+        <div class="flex items-center space-x-2">
+          <div class="w-10 h-10 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center">
+            <span class="text-white font-bold text-lg">K</span>
+          </div>
+          <span class="text-xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">KIRNA.DEV</span>
+        </div>
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="index.html" class="text-white/80 hover:text-white transition-colors duration-300 font-medium">Home</a>
+          <a href="services.html" class="text-white/80 hover:text-white transition-colors duration-300 font-medium">Services</a>
+          <a href="projects.html" class="text-white hover:text-white transition-colors duration-300 font-medium">Projects</a>
+          <a href="about.html" class="text-white/80 hover:text-white transition-colors duration-300 font-medium">About</a>
+          <a href="contact.html" class="text-white/80 hover:text-white transition-colors duration-300 font-medium">Contact</a>
+          <button class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-medium hover:shadow-lg hover:shadow-blue-500/25 transition-all duration-300">
+            Get Started
+          </button>
+        </div>
+        <!-- Mobile Menu Button -->
+        <button @click="isMenuOpen = !isMenuOpen" class="md:hidden text-white">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div x-show="isMenuOpen" x-transition class="md:hidden mt-4 pb-4 border-t border-white/10">
+        <div class="flex flex-col space-y-4 pt-4">
+          <a href="index.html" class="text-white/80 hover:text-white transition-colors duration-300">Home</a>
+          <a href="services.html" class="text-white/80 hover:text-white transition-colors duration-300">Services</a>
+          <a href="projects.html" class="text-white hover:text-white transition-colors duration-300">Projects</a>
+          <a href="about.html" class="text-white/80 hover:text-white transition-colors duration-300">About</a>
+          <a href="contact.html" class="text-white/80 hover:text-white transition-colors duration-300">Contact</a>
+          <button class="px-6 py-2 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-medium">
+            Get Started
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Projects Section -->
+  <section class="pt-32 pb-24 relative">
+    <div class="max-w-7xl mx-auto px-6">
+      <!-- Section Header -->
+      <div class="text-center mb-20">
+        <h1 class="text-5xl md:text-6xl font-bold mb-6">
+          <span class="bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">Our</span>
+          <span class="block bg-gradient-to-r from-blue-400 to-purple-400 bg-clip-text text-transparent">Projects</span>
+        </h1>
+        <p class="text-xl text-white/70 max-w-3xl mx-auto">
+          A showcase of our latest and greatest work, blending design and technology for real-world impact.
+        </p>
+      </div>
+      <!-- Projects Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Project Card 1 -->
+        <div class="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-purple-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <img src="/src/assets/images/placeholder1.jpg" alt="Project 1" class="w-10 h-10 rounded-lg object-cover">
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4">Project Phoenix</h3>
+            <p class="text-white/70 leading-relaxed">
+              A blazing fast startup landing page with seamless animations and smooth UX.
+            </p>
+            <a href="#" class="mt-4 inline-block text-blue-400 hover:underline font-semibold">View Details →</a>
+          </div>
+        </div>
+        <!-- Project Card 2 -->
+        <div class="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-pink-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <img src="/src/assets/images/placeholder2.jpg" alt="Project 2" class="w-10 h-10 rounded-lg object-cover">
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4">Portfolio Pro</h3>
+            <p class="text-white/70 leading-relaxed">
+              A sleek personal portfolio designed for creatives who want to stand out.
+            </p>
+            <a href="#" class="mt-4 inline-block text-purple-400 hover:underline font-semibold">View Details →</a>
+          </div>
+        </div>
+        <!-- Project Card 3 -->
+        <div class="group relative bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl p-8 hover:bg-white/10 hover:border-white/20 transition-all duration-500 hover:scale-105">
+          <div class="absolute inset-0 bg-gradient-to-br from-pink-500/10 to-orange-500/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <div class="relative z-10">
+            <div class="w-16 h-16 bg-gradient-to-br from-pink-500 to-orange-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+              <img src="/src/assets/images/placeholder3.jpg" alt="Project 3" class="w-10 h-10 rounded-lg object-cover">
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4">E-Commerce Elite</h3>
+            <p class="text-white/70 leading-relaxed">
+              A fully responsive e-commerce platform with custom animations and micro-interactions.
+            </p>
+            <a href="#" class="mt-4 inline-block text-pink-400 hover:underline font-semibold">View Details →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+  <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+  <script src="/src/js/main.js"></script>
+  <script>
+    AOS.init();
+  </script>
+</body>
+</html>
